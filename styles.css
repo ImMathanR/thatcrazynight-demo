@@ -72,20 +72,22 @@ body::after {
 .ox { color: var(--oxblood); }
 .sgflag { display: inline-block; width: 1.55em; vertical-align: -0.32em; margin: 0 .12em; }
 
+/* stamped tag — echoes the door stamp, not the AI sparkle-label */
 .eyebrow {
+  display: inline-block;
   font-family: var(--font-mono);
-  font-size: .72rem;
-  letter-spacing: .34em;
+  font-weight: 700;
+  font-size: .66rem;
+  letter-spacing: .2em;
   text-transform: uppercase;
   color: var(--ash);
-  margin-bottom: 1.4rem;
+  border: 1.5px solid var(--line);
+  padding: .42rem .58rem .36rem .72rem;
+  transform: rotate(-1.6deg);
+  transform-origin: left center;
+  margin-bottom: 1.9rem;
 }
-.eyebrow--ox { color: var(--oxblood); }
-.eyebrow::before {
-  content: "✷ ";
-  color: var(--oxblood);
-}
-.eyebrow--ox::before { color: var(--whisky); }
+.eyebrow--ox { color: var(--oxblood); border-color: rgba(173, 34, 34, .5); }
 
 /* ---------- buttons ---------- */
 .btn {
