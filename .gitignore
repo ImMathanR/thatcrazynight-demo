@@ -1,0 +1,13 @@
+# os
+.DS_Store
+Thumbs.db
+
+# editor
+.vscode/
+.idea/
+*.swp
+
+# local
+node_modules/
+.cache/
+*.log

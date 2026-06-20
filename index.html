@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THE CRAZY NIGHT — a drinking society, not a club</title>
+  <meta name="description" content="Everyone has that one crazy night. This one's yours. An invite-by-spirit drinking society in Singapore. Ever felt like you don't belong anywhere? This is for you. Read the code." />
+  <meta name="theme-color" content="#060505" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="THE CRAZY NIGHT" />
+  <meta property="og:description" content="Everyone has that one crazy night. This one's yours. Singapore. This is for you. Read the code." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://thatcrazynight.com" />
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip" href="#apply">Skip to the door</a>
+
+  <!-- reusable icons -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="mug" viewBox="0 0 28 30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 11h12v15a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3V11Z" />
+      <path d="M18 14h3a3 3 0 0 1 3 3v3a3 3 0 0 1-3 3h-3" />
+      <path d="M6 11c-1-3 1-5 3-5 1-2 3-2 4-1 1-2 4-2 5 1 2 0 3 2 0 4" />
+      <line x1="6" y1="17" x2="18" y2="17" />
+    </symbol>
+    <symbol id="sgflag" viewBox="0 0 30 20">
+      <clipPath id="sgr"><rect width="30" height="20" rx="4.5" /></clipPath>
+      <g clip-path="url(#sgr)">
+        <rect width="30" height="20" fill="#ece4d6" />
+        <rect width="30" height="10" fill="#c0263a" />
+        <circle cx="8" cy="6.2" r="4" fill="#ece4d6" />
+        <circle cx="9.8" cy="6.2" r="3.2" fill="#c0263a" />
+        <g fill="#ece4d6">
+          <circle cx="14.8" cy="3.6" r=".82" />
+          <circle cx="17" cy="5.2" r=".82" />
+          <circle cx="12.6" cy="5.2" r=".82" />
+          <circle cx="16.2" cy="7.8" r=".82" />
+          <circle cx="13.4" cy="7.8" r=".82" />
+        </g>
+      </g>
+    </symbol>
+  </svg>
+
+  <!-- ===================== TOP STRIP ===================== -->
+  <header class="topbar">
+    <a class="topbar__mark" href="#top">THE&nbsp;CRAZY&nbsp;NIGHT</a>
+    <nav class="topbar__nav" aria-label="Sections">
+      <a href="#why">The&nbsp;Why</a>
+      <a href="#code">The&nbsp;Code</a>
+      <a href="#crawl">The&nbsp;Crawl</a>
+      <a href="#apply">The&nbsp;Door</a>
+    </nav>
+    <a class="topbar__cta" href="#apply">Earn your spot</a>
+  </header>
+
+  <main id="top">
+
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" aria-labelledby="hero-h">
+      <p class="eyebrow eyebrow--ox js-reveal">A drinking society — not a club · Night No. <span data-night>001</span></p>
+
+      <h1 class="hero__shout" id="hero-h">
+        <span class="line"><span class="line__in js-rise">Everyone has</span></span>
+        <span class="line"><span class="line__in js-rise"><em class="amber">that</em> crazy night.</span></span>
+        <span class="line line--sub"><span class="line__in js-rise"><em class="ox">This</em> one's yours.</span></span>
+      </h1>
+
+      <p class="hero__sub js-reveal">
+        One pint. Eight strangers. A code. Show up and find out.
+      </p>
+
+      <div class="hero__actions js-reveal">
+        <a class="btn btn--solid" href="#apply">Earn your spot</a>
+        <a class="btn btn--ghost" href="#code">Read the code</a>
+      </div>
+
+      <!-- Signature: the door stamp -->
+      <svg class="stamp js-stamp" viewBox="0 0 320 210" role="img" aria-label="The Crazy Night — Night Number 001, Singapore, by invitation">
+        <defs>
+          <filter id="ink" x="-20%" y="-20%" width="140%" height="140%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.014 0.02" numOctaves="2" seed="7" result="n" />
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="5" />
+          </filter>
+        </defs>
+        <g filter="url(#ink)">
+          <rect x="12" y="12" width="296" height="186" rx="16" fill="none" stroke="currentColor" stroke-width="4" />
+          <rect x="22" y="22" width="276" height="166" rx="11" fill="none" stroke="currentColor" stroke-width="1.4" />
+          <text x="160" y="72" text-anchor="middle" class="st-lg">THE CRAZY NIGHT</text>
+          <line x1="64" y1="94" x2="256" y2="94" stroke="currentColor" stroke-width="1.4" />
+          <text x="160" y="128" text-anchor="middle" class="st-md">NIGHT NO. 001</text>
+          <text x="160" y="160" text-anchor="middle" class="st-sm">SG · BY INVITATION</text>
+        </g>
+      </svg>
+    </section>
+
+    <!-- ===================== TICKER ===================== -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track">
+        <span>Don't talk about it</span><span class="ticker__dot">✷</span>
+        <span>Stay till 3</span><span class="ticker__dot">✷</span>
+        <span>Make their night</span><span class="ticker__dot">✷</span>
+        <span>No perfect photos</span><span class="ticker__dot">✷</span>
+        <span>Pay your own way</span><span class="ticker__dot">✷</span>
+        <span>We get everyone home</span><span class="ticker__dot">✷</span>
+        <span>Don't talk about it</span><span class="ticker__dot">✷</span>
+        <span>Stay till 3</span><span class="ticker__dot">✷</span>
+        <span>Make their night</span><span class="ticker__dot">✷</span>
+        <span>No perfect photos</span><span class="ticker__dot">✷</span>
+        <span>Pay your own way</span><span class="ticker__dot">✷</span>
+        <span>We get everyone home</span><span class="ticker__dot">✷</span>
+      </div>
+    </div>
+
+    <!-- ===================== MANIFESTO / WHY ===================== -->
+    <section class="band band--why" id="why" aria-labelledby="why-h">
+      <p class="eyebrow js-reveal">The why</p>
+      <h2 class="sr-only" id="why-h">Why this exists</h2>
+      <div class="why__col">
+        <p class="why__quiet js-reveal">Your week owns you. Your job owns you. Your phone owns you.</p>
+
+        <p class="why__big js-reveal">For one&nbsp;night,<br><em class="amber">nothing&nbsp;does.</em></p>
+
+        <p class="why__quiet js-reveal">We're not here to be optimized. Keep your cold plunge, your green juice, your 5am alarm. One night completely off the rails — then back to running our lives.</p>
+
+        <p class="why__mark js-reveal" aria-hidden="true">✷</p>
+
+        <p class="why__big js-reveal"><em class="ox">This isn't<br>for drunks.</em><br>It's for people who<br>forgot how to let&nbsp;go.</p>
+
+        <p class="why__quiet js-reveal">Give the night everything. Tomorrow, you're back to being the best in the room.</p>
+      </div>
+    </section>
+
+    <!-- ===================== THREE PILLARS ===================== -->
+    <section class="band band--pillars" aria-labelledby="pillars-h">
+      <p class="eyebrow js-reveal">The three</p>
+      <h2 class="sr-only" id="pillars-h">The three pillars</h2>
+      <ul class="pillars">
+        <li class="pillar js-reveal">
+          <span class="pillar__no">No.&nbsp;01</span>
+          <h3 class="pillar__name">No&nbsp;audience</h3>
+          <p class="pillar__body">No photos for the gram. Phones down — you're here to live it, not film it.</p>
+        </li>
+        <li class="pillar js-reveal">
+          <span class="pillar__no">No.&nbsp;02</span>
+          <h3 class="pillar__name">No&nbsp;status</h3>
+          <p class="pillar__body">Your résumé, your money, your imported emerald bracelet — worthless here. Nobody cares who you are out there.</p>
+        </li>
+        <li class="pillar js-reveal">
+          <span class="pillar__no">No.&nbsp;03</span>
+          <h3 class="pillar__name">No&nbsp;hiding</h3>
+          <p class="pillar__body">This isn't where you run from your life. It's a reset. Give the night everything, go back sharper.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ===================== THE CODE ===================== -->
+    <section class="band band--code" id="code" aria-labelledby="code-h">
+      <div class="band__head js-reveal">
+        <p class="eyebrow eyebrow--ox">The Code</p>
+        <h2 class="band__title" id="code-h">Who you are<br>once you're in.</h2>
+        <p class="band__note">Five rules. Hover any line to read it. Break one and you're out.</p>
+      </div>
+
+      <ol class="rules">
+        <li class="rule js-reveal" tabindex="0"><span class="rule__no">01</span><div class="rule__body"><h3 class="rule__line">Leave your status at the door.</h3><div class="rule__reveal"><p class="rule__exp">Nobody here cares what you do for money, what you drive, or the view from your office. No titles, no degrees, no flexing — and we don't bitch about people who aren't in the room.</p></div></div></li>
+        <li class="rule js-reveal" tabindex="0"><span class="rule__no">02</span><div class="rule__body"><h3 class="rule__line">Be a good drunk.</h3><div class="rule__reveal"><p class="rule__exp">Good drunks cry, laugh too loud, and make someone else's night. Bad drunks turn mean and wreck it — and they don't come back.</p></div></div></li>
+        <li class="rule js-reveal" tabindex="0"><span class="rule__no">03</span><div class="rule__body"><h3 class="rule__line">No perfect photos. Only the drunk ones.</h3><div class="rule__reveal"><p class="rule__exp">Phone stays in your pocket. If a photo happens it's blurry, stupid and real — no posing, no stories, no audience. This isn't content.</p></div></div></li>
+        <li class="rule js-reveal" tabindex="0"><span class="rule__no">04</span><div class="rule__body"><h3 class="rule__line">Pay your own way.</h3><div class="rule__reveal"><p class="rule__exp">Everyone covers their own — max $150 a night. Nobody here makes a cent off you. This was never a business.</p></div></div></li>
+        <li class="rule js-reveal" tabindex="0"><span class="rule__no">05</span><div class="rule__body"><h3 class="rule__line">We get everyone home.</h3><div class="rule__reveal"><p class="rule__exp">We start together, we leave together. Nobody gets dumped in a gutter or left to sort it out alone. Everyone gets home.</p></div></div></li>
+      </ol>
+    </section>
+
+    <!-- ===================== THE CRAWL ===================== -->
+    <section class="band band--crawl" id="crawl" aria-labelledby="crawl-h">
+      <div class="band__head js-reveal">
+        <p class="eyebrow eyebrow--ox">The Crawl</p>
+        <h2 class="band__title" id="crawl-h">How the night<br>actually runs.</h2>
+        <p class="band__note">Three rules. One direction: forward, until 3.</p>
+      </div>
+
+      <ol class="rules rules--crawl">
+        <li class="rule js-reveal" tabindex="0"><span class="rule__no">01</span><div class="rule__body"><h3 class="rule__line">A pint opens your mind.</h3><div class="rule__reveal"><p class="rule__exp">First drink hits the table — and you down it. The Aussies call it <em class="ox">skulling</em>, the Swedes shout <em class="amber">skål</em>. Skull it on the spot, or you've got four minutes flat. Non-negotiable — that's when the armour comes off and the night starts.</p><p class="rule__stat" aria-hidden="true"><span class="rule__stat-n">4</span><span class="rule__stat-u">minutes<br><em>or skull it</em></span></p></div></div></li>
+        <li class="rule js-reveal" tabindex="0"><span class="rule__no">02</span><div class="rule__body"><h3 class="rule__line">New bar every hour. A drink at each.</h3><div class="rule__reveal"><p class="rule__exp">We don't get comfortable. Every hour we're up and moving, a drink at every stop — your round, your tab. Keep up.</p></div></div></li>
+        <li class="rule js-reveal" tabindex="0"><span class="rule__no">03</span><div class="rule__body"><h3 class="rule__line">Stay till 3.</h3><div class="rule__reveal"><p class="rule__exp">You're in till 3am. Nobody wants to hear about your workout, your sleep score, or your 9am. You knew the deal — the night gets the night.</p></div></div></li>
+      </ol>
+
+      <div class="timeline" aria-hidden="true">
+        <span class="timeline__t">8PM</span>
+        <span class="timeline__bar">
+          <svg class="mug"><use href="#mug" /></svg>
+          <svg class="mug"><use href="#mug" /></svg>
+          <svg class="mug"><use href="#mug" /></svg>
+          <svg class="mug"><use href="#mug" /></svg>
+          <svg class="mug"><use href="#mug" /></svg>
+          <svg class="mug"><use href="#mug" /></svg>
+          <svg class="mug mug--last"><use href="#mug" /></svg>
+        </span>
+        <span class="timeline__t timeline__t--ox">3AM</span>
+      </div>
+      <p class="timeline__note">A beer every hour. Seven stops. One direction.</p>
+    </section>
+
+    <!-- ===================== THE FILTER ===================== -->
+    <section class="filter" aria-label="The filter">
+      <p class="filter__line js-reveal">If you're here to run from your life, this isn't it.</p>
+      <p class="filter__line filter__line--ox js-reveal">If you're here to remember you're alive — welcome to the night.</p>
+    </section>
+
+    <!-- ===================== THE KEEPER ===================== -->
+    <section class="band band--keeper" id="keeper" aria-labelledby="keeper-h">
+      <div class="keeper__head js-reveal">
+        <p class="eyebrow eyebrow--ox">The Keeper</p>
+        <h2 class="band__title" id="keeper-h">Why I<br>started this.</h2>
+      </div>
+      <div class="keeper__note">
+        <p class="keeper__p js-reveal">Over the past year I hit ten countries and drank with everyone in them — locals on their own turf, tourists, backpackers, the rich at their reserved tables. Long enough to see exactly what's broken about how Asia parties.</p>
+        <p class="keeper__p js-reveal">It's all for show. The fine dining for show. The bottle service for show. The expensive table you book so people can watch you sit at it. And worst of all — most people only let go when they're far from home, or stuck with company too boring to care what they think.</p>
+        <p class="keeper__p js-reveal">I don't buy that. You can chase something real in your life <em class="amber">and</em> have a night you'll never forget. I do everything at 100% — work, life, and the drinking too. When I go out, I go hard, and the goal never changes: <em class="ox">make it an epic night.</em> So it becomes one.</p>
+        <p class="keeper__p js-reveal">Partying in SG has flatlined — Clarke Quay is hit or miss these days. So I'm building the night I have everywhere else, right here. Either I throw a few epic nights for the right people, or worst case, I have mine trying.</p>
+        <p class="keeper__p keeper__p--big js-reveal">Either way, the night happens.</p>
+        <p class="keeper__sign js-reveal">— the keeper</p>
+      </div>
+    </section>
+
+    <!-- ===================== THE DOOR / APPLY ===================== -->
+    <section class="band band--apply" id="apply" aria-labelledby="apply-h">
+      <div class="apply__grid">
+        <div class="apply__intro js-reveal">
+          <p class="eyebrow eyebrow--ox">The door</p>
+          <h2 class="band__title" id="apply-h">You don't earn<br>your way in.<br>You earn your<br>way to <em class="amber">stay.</em></h2>
+          <p class="apply__copy">
+            Anyone can come. Age, money, where you're from — none of it matters here.
+            The only way out is breaking the code.
+          </p>
+          <p class="apply__copy apply__copy--dim">
+            Eight people a night. SG&nbsp;<svg class="sgflag"><use href="#sgflag" /></svg>. We read every word and pick the room by hand.
+            Status won't get you in. Spirit will.
+          </p>
+
+          <div class="qr" aria-hidden="true">
+            <div class="qr__frame">
+              <span class="qr__tag">Scan&nbsp;to&nbsp;enter</span>
+            </div>
+            <p class="qr__note">The QR routes here. Stick it where the right people are.</p>
+          </div>
+        </div>
+
+        <div class="apply__formwrap js-reveal">
+          <!-- Web3Forms: replace the access_key with your own from web3forms.com -->
+          <form class="form" id="apply-form" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+            <input type="hidden" name="subject" value="New applicant — THE CRAZY NIGHT" />
+            <input type="hidden" name="from_name" value="thatcrazynight.com" />
+            <!-- honeypot -->
+            <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" />
+
+            <div class="field">
+              <label for="f-name">What do we call you?</label>
+              <input id="f-name" name="name" type="text" required autocomplete="name" placeholder="A name, a handle — whatever's real" />
+            </div>
+
+            <div class="field">
+              <label for="f-contact">Telegram or WhatsApp</label>
+              <input id="f-contact" name="contact" type="text" required placeholder="So we can find you" />
+            </div>
+
+            <div class="field">
+              <label for="f-story">Everyone's got that one crazy night. Tell us about yours — or the one you never had.</label>
+              <textarea id="f-story" name="story" rows="4" required placeholder="A few sentences. Be real, not impressive."></textarea>
+            </div>
+
+            <div class="field">
+              <label for="f-ref">Who sent you? <span class="opt">(optional)</span></label>
+              <input id="f-ref" name="referred_by" type="text" placeholder="A name, if there is one" />
+            </div>
+
+            <label class="check">
+              <input type="checkbox" name="honor_code" required />
+              <span>I've read the code. I'll honor the night.</span>
+            </label>
+
+            <button type="submit" class="btn btn--solid btn--block">Earn your spot</button>
+            <p class="form__fine">No status check. No cover charge. Just the code.</p>
+          </form>
+
+          <div class="form__done" id="form-done" hidden>
+            <p class="form__done-stamp">Logged</p>
+            <p class="form__done-lead">You're in the book.</p>
+            <p class="form__done-sub">Don't talk about it. If the night has a seat for you, we'll find you.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <p class="footer__refrain">Make their night.<br>Yours follows.</p>
+    <p class="footer__whisper">What happens at the night stays at the night.</p>
+    <p class="footer__noads">No brand. No ads. No tickets. Just the night.</p>
+    <p class="footer__meta">
+      thatcrazynight.com · SG&nbsp;<svg class="sgflag"><use href="#sgflag" /></svg> · Night No. <span data-night>001</span>
+    </p>
+    <p class="footer__legal">Drink like a friend. We get everyone home.</p>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
