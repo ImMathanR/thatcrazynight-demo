@@ -178,6 +178,56 @@
     }
   }
 
+  /* ---------- dictionary popover: anchor the fixed card to the word ---------- */
+  document.querySelectorAll(".defword").forEach(function (word) {
+    var card = word.querySelector(".defcard");
+    if (!card) return;
+    var hideTimer = null;
+
+    function place() {
+      var w = word.getBoundingClientRect();
+      var gap = 10, margin = 10;
+      var cw = card.offsetWidth, ch = card.offsetHeight;
+      var wordCx = w.left + w.width / 2;
+
+      // prefer above the word; flip below if it would clip the top
+      var below = w.top - ch - gap < margin;
+      card.classList.toggle("is-below", below);
+      var top = below ? w.bottom + gap : w.top - ch - gap;
+
+      // centre horizontally on the word, clamped to the viewport
+      var left = wordCx - cw / 2;
+      left = Math.max(margin, Math.min(left, window.innerWidth - cw - margin));
+
+      card.style.top = Math.round(top) + "px";
+      card.style.left = Math.round(left) + "px";
+      // caret tracks the word even after horizontal clamping
+      card.style.setProperty("--caret", Math.round(wordCx - left) + "px");
+    }
+
+    function open() {
+      if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; }
+      word.classList.add("is-open");
+      place();
+    }
+    function close() {
+      hideTimer = setTimeout(function () { word.classList.remove("is-open"); }, 110);
+    }
+
+    word.addEventListener("pointerenter", open);
+    word.addEventListener("pointerleave", close);
+    word.addEventListener("focusin", open);
+    word.addEventListener("focusout", close);
+
+    // keep it pinned to the word while open
+    window.addEventListener("scroll", function () {
+      if (word.classList.contains("is-open")) place();
+    }, { passive: true });
+    window.addEventListener("resize", function () {
+      if (word.classList.contains("is-open")) place();
+    });
+  });
+
   /* ---------- night number (single source of truth) ---------- */
   // Bump this each week. Stays a literal so the build needs no data layer.
   var NIGHT = "001";
