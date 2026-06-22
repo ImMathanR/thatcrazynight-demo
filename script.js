@@ -140,40 +140,63 @@
     });
   }
 
-  /* ---------- mug cascade: pour the beers in, left to right (Web Animations API) ---------- */
+  /* ---------- the timeline: clone fillable mugs, pour the beers in left to right ---------- */
   var timeline = document.querySelector(".timeline");
-  if (timeline) {
-    var mugs = Array.prototype.slice.call(timeline.querySelectorAll(".mug"));
-    var canAnimate = !reduce && mugs.length && typeof mugs[0].animate === "function";
+  var bar = timeline && timeline.querySelector(".timeline__bar");
+  var mugTpl = document.getElementById("mug-tpl");
+  if (bar && mugTpl && "content" in mugTpl && mugTpl.content.firstElementChild) {
+    var count = parseInt(bar.getAttribute("data-mugs"), 10) || 7;
+    var mugs = [];
+    for (var m = 0; m < count; m++) {
+      var node = mugTpl.content.firstElementChild.cloneNode(true);
+      if (m === count - 1) node.classList.add("mug--last");
+      bar.appendChild(node);
+      mugs.push(node);
+    }
 
-    // one distinct move per mug, left to right
-    var moves = [
-      [{ opacity: 0, transform: "translateY(20px)" }, { opacity: 1, transform: "none" }],
-      [{ opacity: 0, transform: "scale(.25)" }, { opacity: 1, transform: "scale(1.2)", offset: .65 }, { opacity: 1, transform: "scale(1)" }],
-      [{ opacity: 0, transform: "rotate(-32deg) translateY(10px)" }, { opacity: 1, transform: "none" }],
-      [{ opacity: 0, transform: "translateY(-24px)" }, { opacity: 1, transform: "translateY(6px)", offset: .6 }, { opacity: 1, transform: "none" }],
-      [{ opacity: 0, transform: "rotate(36deg) translateX(14px)" }, { opacity: 1, transform: "none" }],
-      [{ opacity: 0, transform: "translateX(-22px)" }, { opacity: 1, transform: "none" }],
-      [{ opacity: 0, transform: "scale(1.9)" }, { opacity: 1, transform: "scale(.8)", offset: .45 }, { transform: "scale(1.14) rotate(-7deg)", offset: .72 }, { opacity: 1, transform: "none" }]
-    ];
+    var canPour = !reduce && typeof mugs[0].animate === "function";
 
-    function pour() {
+    function fillStatic() {
       mugs.forEach(function (mug, i) {
-        if (mug.getAnimations) mug.getAnimations().forEach(function (a) { a.cancel(); });
-        mug.animate(moves[i % moves.length], {
-          duration: 620, delay: i * 155, fill: "both",
-          easing: "cubic-bezier(.2,.8,.2,1)"
-        });
+        var p = mug.querySelector(".mug__pour");
+        if (p) p.style.transform = "translateY(0)";
+        mug.classList.add("is-poured");
+        if (i === mugs.length - 1) mug.classList.add("is-drunk");
       });
     }
 
-    if (!canAnimate || !("IntersectionObserver" in window)) {
-      mugs.forEach(function (mug) { mug.style.opacity = "1"; });
+    function pour() {
+      mugs.forEach(function (mug, i) {
+        var last = i === mugs.length - 1;
+        var p = mug.querySelector(".mug__pour");
+        mug.classList.remove("is-poured", "is-drunk");
+        if (!p) return;
+        if (p.getAnimations) p.getAnimations().forEach(function (a) { a.cancel(); });
+
+        // the beer glugs up with a little overshoot; the last one overfills
+        var end = last ? -2 : 0;
+        var anim = p.animate([
+          { transform: "translateY(24px)" },
+          { transform: "translateY(" + (end - 3) + "px)", offset: .68 },
+          { transform: "translateY(" + (end + 1.6) + "px)", offset: .85 },
+          { transform: "translateY(" + end + "px)" }
+        ], { duration: 680, delay: 200 + i * 165, fill: "both", easing: "cubic-bezier(.3,.7,.2,1)" });
+
+        // foam head + bubbles switch on as each beer lands; last mug gets tipsy
+        anim.onfinish = function () {
+          mug.classList.add("is-poured");
+          if (last) mug.classList.add("is-drunk");
+        };
+      });
+    }
+
+    if (!canPour || !("IntersectionObserver" in window)) {
+      fillStatic();
     } else {
-      // fire when the timeline reaches the centre band of the screen, replay on re-entry
+      // empty until the timeline reaches the centre band; replay on re-entry
       var tio = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) { if (e.isIntersecting) pour(); });
-      }, { rootMargin: "-35% 0px -35% 0px", threshold: 0 });
+      }, { rootMargin: "-30% 0px -30% 0px", threshold: 0 });
       tio.observe(timeline);
     }
   }

@@ -70,7 +70,7 @@ body::after {
 
 .amber { color: var(--whisky); }
 .ox { color: var(--oxblood); }
-.sgflag { display: inline-block; width: 1.55em; vertical-align: -0.32em; margin: 0 .12em; }
+.sgflag { display: inline-block; width: 1.45em; height: .97em; vertical-align: -0.16em; margin: 0 .18em; }
 
 /* stamped tag — echoes the door stamp, not the AI sparkle-label */
 .eyebrow {
@@ -291,24 +291,50 @@ body::after {
 }
 .mug {
   position: relative; display: block;
-  width: clamp(18px, 2.4vw, 24px); height: auto; color: var(--ash);
-  background: var(--ink); padding: 0 4px;
-  transition: color .25s ease, transform .25s ease;
+  width: clamp(26px, 3.3vw, 34px); height: auto; color: var(--ash);
+  background: var(--ink); padding: 0 5px;
+  transform-origin: 50% 86%;
+  transition: color .25s ease;
 }
+.mug__glass, .mug__handle {
+  fill: none; stroke: currentColor; stroke-width: 2;
+  stroke-linejoin: round; stroke-linecap: round;
+  transition: stroke .25s ease;
+}
+.mug__beer { fill: var(--whisky); }
+.mug__foam { fill: var(--bone); }
+.mug__cap  { fill: var(--bone); opacity: 0; transform: translateY(2px); transform-box: fill-box; transform-origin: center bottom; }
+.mug__bub  { fill: var(--bone); opacity: 0; }
+.mug__pour { transform: translateY(24px); }     /* empty glass until poured */
+.mug.is-poured .mug__cap { opacity: .92; transform: translateY(0); transition: opacity .3s ease .12s, transform .35s cubic-bezier(.2,1.4,.4,1) .12s; }
+.mug.is-poured .mug__bub { animation: mug-bubble 2.5s linear infinite; }
+.mug.is-poured .mug__bub--2 { animation-duration: 3.1s; animation-delay: .5s; }
+.mug.is-poured .mug__bub--3 { animation-duration: 2.2s; animation-delay: 1s; }
 .mug--last { color: var(--oxblood); }
+.mug--last.is-drunk { animation: mug-drunk 1.6s ease-in-out infinite; }
 .timeline:hover .mug { color: var(--whisky); }
 .timeline:hover .mug--last { color: var(--oxblood); }
+@keyframes mug-bubble {
+  0%   { opacity: 0; transform: translateY(2px); }
+  25%  { opacity: .55; }
+  85%  { opacity: .4; }
+  100% { opacity: 0; transform: translateY(-15px); }
+}
+@keyframes mug-drunk {
+  0%, 100% { transform: rotate(-6deg); }
+  50%      { transform: rotate(6deg); }
+}
 .timeline__note {
   margin-top: 1.1rem; font-family: var(--font-mono); font-size: .74rem;
   letter-spacing: .14em; text-transform: uppercase; color: var(--ash-dim);
 }
 
-/* ---------- mug cascade: poured in by the Web Animations API (script.js) ---------- */
-.timeline__bar { perspective: 700px; }
-.is-ready .timeline .mug { opacity: 0; }   /* hidden until JS pours them in */
+/* mugs pour in (translateY) via the Web Animations API in script.js;
+   the glass starts empty (.mug__pour offset) so nothing flashes pre-fill */
 
 /* big "4 minutes" callout inside crawl rule 01 */
 .rule__stat { display: flex; align-items: center; gap: .85rem; margin-top: 1.2rem; }
+.rule__stat--top { margin-top: .15rem; margin-bottom: 1.05rem; }
 .rule__stat-n {
   font-family: var(--font-display); font-weight: 400;
   font-size: clamp(3.4rem, 11vw, 6rem); line-height: .76; color: var(--oxblood);
@@ -625,7 +651,9 @@ body::after {
 .flat .rule__reveal { grid-template-rows: 1fr !important; }
 .flat .rule__reveal > .rule__exp { opacity: 1 !important; padding-top: .85rem !important; }
 .flat .ticker__track { animation: none !important; }
-.flat .timeline .mug { opacity: 1 !important; animation: none !important; }
+.flat .timeline .mug, .flat .mug--last.is-drunk { animation: none !important; transform: none !important; }
+.flat .mug__pour { transform: none !important; }
+.flat .mug__cap { opacity: .92 !important; transform: none !important; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -635,7 +663,10 @@ body::after {
   .rule__reveal { grid-template-rows: 1fr !important; }
   .rule__reveal > .rule__exp { opacity: 1 !important; padding-top: .85rem !important; }
   .ticker__track { animation: none !important; }
-  .is-ready .timeline .mug { opacity: 1 !important; animation: none !important; }
+  .timeline .mug, .mug--last.is-drunk { animation: none !important; transform: none !important; }
+  .mug__pour { transform: none !important; }
+  .mug__cap { opacity: .92 !important; transform: none !important; }
+  .mug__bub { animation: none !important; }
   .btn:hover, .pillar:hover { transform: none; }
   body::after { display: none; }
 }
