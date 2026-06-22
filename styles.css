@@ -75,6 +75,7 @@ body::after {
 /* stamped tag — echoes the door stamp, not the AI sparkle-label */
 .eyebrow {
   display: inline-block;
+  align-self: flex-start; /* in flex containers (hero) don't stretch the box across the page */
   font-family: var(--font-mono);
   font-weight: 700;
   font-size: .66rem;
