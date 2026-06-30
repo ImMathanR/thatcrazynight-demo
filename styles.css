@@ -307,11 +307,13 @@ body::after {
 .mug__bub  { fill: var(--bone); opacity: 0; }
 .mug__pour { transform: translateY(24px); }     /* empty glass until poured */
 .mug.is-poured .mug__cap { opacity: .92; transform: translateY(0); transition: opacity .3s ease .12s, transform .35s cubic-bezier(.2,1.4,.4,1) .12s; }
-.mug.is-poured .mug__bub { animation: mug-bubble 2.5s linear infinite; }
-.mug.is-poured .mug__bub--2 { animation-duration: 3.1s; animation-delay: .5s; }
-.mug.is-poured .mug__bub--3 { animation-duration: 2.2s; animation-delay: 1s; }
+/* a short fizz as the beer lands, then it settles — not a perpetual loop */
+.mug.is-poured .mug__bub { animation: mug-bubble 2.4s linear 2; }
+.mug.is-poured .mug__bub--2 { animation-duration: 3s; animation-delay: .45s; }
+.mug.is-poured .mug__bub--3 { animation-duration: 2.1s; animation-delay: .9s; }
 .mug--last { color: var(--oxblood); }
-.mug--last.is-drunk { animation: mug-drunk 1.6s ease-in-out infinite; }
+/* the last beer tips a few times, then just leans — drunk, then done */
+.mug--last.is-drunk { animation: mug-drunk 2.4s cubic-bezier(.4,.1,.4,1.4) .1s forwards; }
 .timeline:hover .mug { color: var(--whisky); }
 .timeline:hover .mug--last { color: var(--oxblood); }
 @keyframes mug-bubble {
@@ -321,8 +323,12 @@ body::after {
   100% { opacity: 0; transform: translateY(-15px); }
 }
 @keyframes mug-drunk {
-  0%, 100% { transform: rotate(-6deg); }
-  50%      { transform: rotate(6deg); }
+  0%   { transform: rotate(0deg); }
+  22%  { transform: rotate(-7deg); }
+  46%  { transform: rotate(5.5deg); }
+  68%  { transform: rotate(-4deg); }
+  85%  { transform: rotate(2.5deg); }
+  100% { transform: rotate(-3.5deg); }
 }
 .timeline__note {
   margin-top: 1.1rem; font-family: var(--font-mono); font-size: .74rem;
@@ -631,6 +637,12 @@ body::after {
 .js-reveal { opacity: 0; transform: translateY(22px); }
 .is-ready .js-reveal { transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
 .js-reveal.in { opacity: 1; transform: none; }
+
+/* phones: shorter, quicker rises so stacked sections don't all heave at once */
+@media (max-width: 640px) {
+  .js-reveal { transform: translateY(12px); }
+  .is-ready .js-reveal { transition: opacity .5s ease, transform .5s cubic-bezier(.2,.7,.2,1); }
+}
 
 /* stamp press-in */
 .js-stamp { opacity: 0; }
